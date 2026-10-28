@@ -1,0 +1,85 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OCR comparison (entry page)</title><style>
+:root{--bg:#fbfaf7;--fg:#1d2433;--card:#f6f5f1;--primary:#202f61;--sec:#eee6db;--mut:#626e83;--acc:#f0a830;--bd:#e8e2d9;--open:#2f7a55;--closed:#8a5a1c;--tan:#f7ecda}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,.serif{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;letter-spacing:-.01em}
+a{color:var(--primary)}
+.badge{position:fixed;top:8px;left:8px;z-index:100;background:#1f8a4c;color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;padding:7px 10px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.wrap{max-width:1072px;margin:0 auto;padding:0 16px}
+header.site{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.96);border-bottom:1px solid var(--bd)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--fg)}
+.logo b{display:inline-flex;width:36px;height:36px;border-radius:8px;background:var(--primary);color:#fbfaf7;align-items:center;justify-content:center;font:700 18px Georgia,serif}
+.logo span{font:600 20px Georgia,serif}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{padding:8px 14px;border-radius:6px;font-size:14px;font-weight:500;color:var(--mut);text-decoration:none}
+nav.main a.on{background:var(--sec);color:var(--fg)}
+.hero{background:var(--tan);border-bottom:1px solid var(--bd);padding:40px 0}
+.hero h1{margin:0;font-size:40px;line-height:1.1}
+.hero p{margin:12px 0 0;max-width:640px;font-size:18px;color:#3d4659}
+.tools{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:14px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 8px;align-items:end}
+.filters label{display:flex;flex-direction:column;font-size:12px;color:var(--mut);font-weight:600;gap:3px}
+.filters select{font:14px Inter,system-ui,sans-serif;padding:7px 10px;border:1px solid var(--bd);border-radius:6px;background:#fff;color:var(--fg)}
+h2.sec{font-size:24px;margin:32px 0 12px}
+.list{display:grid;gap:12px}
+.card{border:1px solid var(--bd);background:var(--card);border-radius:10px;padding:16px 18px;display:block;text-decoration:none;color:inherit}
+.card:hover{border-color:var(--primary)}
+.card .meta{font-size:13px;color:var(--mut);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.card h3{margin:4px 0 6px;font-size:19px;color:var(--primary)}
+.card p{margin:8px 0 0;font-size:14.5px}
+.chip{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--bd);background:#fff;margin:2px 4px 2px 0;white-space:nowrap}
+.chip.open{border-color:#a9d3bc;background:#edf7f1;color:#205a3d}
+.chip.closed{border-color:#e4cfa8;background:#fbf3e3;color:#6e4510}
+.tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:4px;background:var(--sec);color:#3d4659}
+.tag.bm{background:#dfe6f7;color:#202f61}
+.legend{font-size:13px;color:var(--mut);margin:6px 0 0}
+.models{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.models div{border:1px solid var(--bd);border-radius:8px;padding:10px 14px;background:#fff;font-size:14px}
+.models b{display:block;margin-bottom:3px}
+.models a{display:inline-block;margin-right:8px;font-size:13px}
+footer{border-top:1px solid var(--bd);margin-top:48px;padding:24px 0;font-size:14px;color:var(--mut)}
+.note{border-left:4px solid var(--acc);background:#fff;padding:10px 14px;margin:20px 0;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+.tw{overflow-x:auto}
+.entry{max-width:760px}
+.entry h1{font-size:34px;line-height:1.15;margin:8px 0}
+.entry h2{font-size:22px;margin:30px 0 8px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:14px;margin:12px 0}
+.facts dt{color:var(--mut);font-weight:600}.facts dd{margin:0}
+.headline{background:var(--tan);border-radius:8px;padding:12px 16px;font-size:17px;margin:12px 0}
+.pending{color:#8a5a1c;font-weight:600}
+@media(max-width:640px){.hero h1{font-size:30px}.logo span{display:none}header.site .wrap{height:auto;padding:10px 16px;flex-wrap:wrap}.badge{font-size:11px}.facts{grid-template-columns:1fr}}
+body{padding-top:0}.hero,.entrytop{padding-top:48px}
+</style></head><body><div class="badge">A and B — entry page</div><header class="site"><div class="wrap"><a class="logo" href="mockup-a-own-subsite-index.html"><b>MD</b><span>Model Data Points</span></a>
+<nav class="main"><a href="mockup-a-own-subsite-index.html">All entries (direction A)</a><a href="mockup-b-section-in-semantic-machines-index.html">All entries (direction B)</a></nav></div></header>
+<main class="wrap entry" style="padding-top:40px">
+<h1>OCR comparison: Unlimited-OCR 2, Docling and MinerU on academic PDFs</h1>
+<dl class="facts"><dt>Date</dt><dd>28 October 2026</dd><dt>Task type</dt><dd>OCR, PDF to Markdown</dd><dt>Status</dt><dd>Complete</dd></dl>
+<h2>Models tested</h2><div class="tw"><table><tr><th>Model or tool</th><th>Provider</th><th>Open?</th><th>How run</th></tr>
+<tr><td>Unlimited-OCR 2 (about 3B parameters)</td><td>Baidu</td><td>Open weights, MIT licence</td><td>Local GPU, SGLang server</td></tr>
+<tr><td>Unlimited-OCR 2, same weights</td><td>Baidu</td><td>Open weights, MIT licence</td><td>Local GPU, Hugging Face Transformers</td></tr>
+<tr><td>Docling 2.93</td><td>Docling project</td><td>Open source</td><td>Local GPU, command line</td></tr>
+<tr><td>MinerU 3.1.9</td><td>OpenDataLab</td><td>Open source</td><td>Local GPU, command line</td></tr></table></div>
+<h2>Purpose</h2><p>To decide whether a new OCR model is worth adding to a PDF-to-Markdown workflow for academic papers, which already uses Docling by default and MinerU for maths-heavy papers.</p>
+<h2>Context</h2><p>Ten academic papers, 174 pages: three two-column journal papers, two table-heavy papers, two maths-heavy papers, one scanned 1967 book chapter, one 66-page report and one Spanish-language paper. All runs were on an NVIDIA DGX Spark (GB10, 128 GB unified memory), one tool at a time. Unlimited-OCR 2 is a recent model from Baidu that reads page images directly.</p>
+<h2>Method</h2><p>Each paper was converted to Markdown by each tool. Wall-clock time was recorded per paper. The Transformers route was started on the first papers and stopped when it proved too slow. Text was compared with the PDF's own text layer (word error rate), every number in each output was checked against the numbers in the text layer, and tables were counted. The scan was compared with OCRmyPDF output instead.</p>
+<h2>Results</h2>
+<div class="headline">Docling took 3.5 minutes for all 10 papers, Unlimited-OCR 2 on SGLang 31 minutes and MinerU 62 minutes, with no accuracy advantage for either slower tool on born-digital papers.</div>
+<div class="tw"><table><tr><th>Setup</th><th>Total time (10 papers)</th><th>Time per page</th><th>Word error rate vs text layer</th><th>Numbers not in text layer</th><th>Tables emitted</th></tr>
+<tr><td>Docling 2.93</td><td>3.5 min</td><td>about 1.2 s</td><td>21.9%</td><td>215</td><td>81</td></tr>
+<tr><td>Unlimited-OCR 2, SGLang</td><td>30.9 min</td><td>about 10.7 s</td><td>22.7%</td><td>249</td><td>84</td></tr>
+<tr><td>MinerU 3.1.9</td><td>61.7 min</td><td>about 21 s</td><td>27.4%</td><td>302</td><td>153</td></tr>
+<tr><td>Unlimited-OCR 2, Transformers</td><td>4 papers only: 446–4,562 s each</td><td>not computed</td><td>not comparable</td><td>not comparable</td><td>not comparable</td></tr></table></div>
+<p><b>Scanned chapter.</b> Against OCRmyPDF as baseline, Unlimited-OCR 2 (19.3%) and MinerU (17.6%) differed far less than Docling (37.5%).</p>
+<h2>Caveats</h2><ul><li>One machine, one set of 10 papers, one run each (n=1).</li>
+<li>The word error rate is dominated by reading order (headers, footnotes, figure text placed differently), so it shows the tools as roughly equal rather than measuring misread words.</li>
+<li>Most numbers not found in the text layer are page numbers, table cells or formatting differences, not misreadings. One real misreading was found in Unlimited-OCR 2 output: a caption's 75% written as 55%.</li>
+<li>One 66-page report accounts for most absent numbers in every tool (200 to 261).</li>
+<li>SGLang times exclude about 1 min 45 s of server start-up; the server held about 61 GB of GPU memory.</li>
+<li>Table layout quality was not judged by eye.</li></ul>
+<h2>What this suggests</h2><p>For born-digital academic PDFs, Docling was about nine times faster than Unlimited-OCR 2 and as accurate on these measures, so the new model was not adopted. Unlimited-OCR 2 may be worth a look for scanned pages, and only through a serving engine such as SGLang: through Transformers it was 5 to 10 times slower again.</p>
+<h2>Source</h2><p><a href="https://github.com/techczech/model-data-points/blob/main/entries/2026-10-28-ocr-comparison.md">entries/2026-10-28-ocr-comparison.md</a> in the GitHub repository (Markdown with YAML frontmatter).</p>
+</main><footer><div class="wrap">Used by both directions: datapoints.semanticmachines.fyi/ocr-comparison and semanticmachines.fyi/data-points/ocr-comparison.</div></footer></body></html>
