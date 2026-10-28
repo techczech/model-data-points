@@ -85,6 +85,8 @@ def parse(path):
         if not isinstance(fm[k], list):
             errors.append(f"{path.name}: {k} must be a list")
     for n, line in enumerate(text.splitlines(), 1):
+        if re.search(r"(?i)javascript:|data:text/html", line):
+            errors.append(f"{path.name}:{n}: script URL not allowed")
         if PRIVATE_PATH.search(line):
             errors.append(f"{path.name}:{n}: contains an absolute or home path (private paths cannot ship): {line.strip()[:80]}")
     for s in fm["sources"] if isinstance(fm["sources"], list) else []:
@@ -198,7 +200,7 @@ def entry_page(x):
     caveats = "".join(f"<li>{e(c)}</li>" for c in x["caveats"])
     more = ""
     if x["_body"]:
-        more = '<h2>More detail</h2><div class="body-md">' + markdown.markdown(x["_body"], extensions=["tables"]) + "</div>"
+        more = '<h2>More detail</h2><div class="body-md">' + markdown.markdown(x["_body"].replace("&", "&amp;").replace("<", "&lt;"), extensions=["tables"]) + "</div>"
     body = f"""<main class="wrap entry" style="padding-top:40px">
 <h1>{e(x["title"])}</h1>
 <dl class="facts"><dt>Date</dt><dd>{long_date(x["date"])}</dd><dt>Task type</dt><dd>{e(TASK_TYPES[x["task_type"]])}</dd><dt>Status</dt><dd>{x["status"].capitalize()}</dd></dl>
