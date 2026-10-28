@@ -8,7 +8,7 @@ models:
     provider: Meta
     open_weights: false
     access: cli
-    version: "muse-wonder-full-1.0; reasoning effort medium"
+    version: "requested model muse-wonder-full-1.0; reasoning effort medium"
 purpose: >-
   Check whether the Muse CLI could complete a bounded code review without
   stopping for tool approval.
@@ -27,6 +27,7 @@ results:
   rows:
     - ["One unattended source review", 0, 0, "Yes"]
 caveats:
+  - The model id is the requested and locally recorded configuration; the answering model was not independently verified.
   - One bounded run; this is not an approval-prompt reliability estimate.
   - The reviewer did not execute tests, run a build or verify the application at runtime.
   - The review verdict was returned by the model; this entry does not independently score its quality.
