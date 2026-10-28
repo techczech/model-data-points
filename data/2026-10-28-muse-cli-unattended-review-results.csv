@@ -1,0 +1,2 @@
+run,model,reasoning_effort,approval_mode,approval_judge,contributor_mode,sandbox_enabled,shell_enabled,write_enabled,web_enabled,exit_code,approval_requests,review_returned
+source-review-1,muse-wonder-full-1.0,medium,never,off,on,true,false,false,false,0,0,true
