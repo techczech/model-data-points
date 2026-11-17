@@ -4,5 +4,6 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 uv run scripts/build-site.py
+python3 scripts/check-citations.py site
 npx wrangler pages deploy site --project-name model-data-points --branch main \
   --commit-hash "$(git rev-parse HEAD)" --commit-message "$(git log -1 --format=%s)"

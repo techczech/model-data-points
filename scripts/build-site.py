@@ -13,6 +13,7 @@ from pathlib import Path
 
 import markdown
 import yaml
+from kit.citation import citation_head, cite_block
 
 ROOT = Path(__file__).resolve().parent.parent
 GITHUB = "https://github.com/techczech/model-data-points"
@@ -119,14 +120,19 @@ def paragraphs(s):
     return "".join(f"<p>{e(p.strip())}</p>" for p in re.split(r"\n\s*\n", str(s).strip()) if p.strip())
 
 
-def page(title, body, desc, nav_on=""):
+def page(title, body, desc, nav_on="", citation=None):
+    citation = citation or {"title": title, "url": "https://datapoints.semanticmachines.fyi" + ("/about/" if nav_on == "about" else "/"),
+                            "site": "Model Data Points", "authors": ["Dominik Lukeš"]}
+    if nav_on != "entries":
+        body = body.replace("</main>", cite_block(citation) + "</main>", 1)
     def a(key, href, label):
         return f'<a{" class=on" if nav_on == key else ""} href="{href}">{label}</a>'
     nav = (a("entries", "/", "Entries") + a("models", "/#models", "Models tested") + a("about", "/about/", "About")
            + f'<a href="{GITHUB}">GitHub</a><a href="{BENCHMARKS}">Semantic Machines Benchmarks</a>')
-    return f"""<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="stylesheet" href="/style.css"></head><body><header class="site"><div class="wrap"><a class="logo" href="/"><b>MD</b><span>Model Data Points</span></a>
+    return f"""<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{e(citation["url"])}">{citation_head(citation)}<script src="/copy.js" defer></script><link rel="stylesheet" href="/style.css"></head><body><header class="site"><div class="wrap"><a class="logo" href="/"><b>MD</b><span>Model Data Points</span></a>
 <nav class="main">{nav}</nav></div></header>
 {body}
+<p id="copy-status" role="status" aria-live="polite"></p>
 <footer><div class="wrap">Model Data Points · datapoints.semanticmachines.fyi · <a href="{GITHUB}">Source repository</a> · <a href="{SM_HOME}">Semantic Machines</a> · Text CC BY 4.0</div></footer></body></html>
 """
 
@@ -217,7 +223,9 @@ def entry_page(x):
 <h2>Source</h2><p><a href="{GITHUB}/blob/main/entries/{e(x["id"])}.md">entries/{e(x["id"])}.md</a> in the GitHub repository (Markdown with YAML frontmatter).</p>
 {"<ul>" + "".join(source_link(s) for s in x["sources"]) + "</ul>" if x["sources"] else ""}
 </main>"""
-    return page(f'{x["title"]} · Model Data Points', body, x["headline"])
+    return page(f'{x["title"]} · Model Data Points', body, x["headline"], citation={
+        "title": x["title"], "url": f'https://datapoints.semanticmachines.fyi/{x["slug"]}/',
+        "site": "Model Data Points", "authors": ["Dominik Lukeš"], "date": x["date"].isoformat()})
 
 
 ABOUT = f"""<main class="wrap entry" style="padding-top:40px"><h1>About Model Data Points</h1>
@@ -249,7 +257,7 @@ def main():
     if out.exists():
         shutil.rmtree(out)
     out.mkdir()
-    for f in ("style.css", "filters.js"):
+    for f in ("style.css", "filters.js", "copy.js"):
         shutil.copy(ROOT / "scripts/assets" / f, out / f)
     (out / "index.html").write_text(index_page(entries), encoding="utf-8")
     (out / "about").mkdir()
