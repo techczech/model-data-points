@@ -267,6 +267,11 @@ def main():
     for x in entries:
         (out / x["slug"]).mkdir()
         (out / x["slug"] / "index.html").write_text(entry_page(x), encoding="utf-8")
+        # Keep source-backed charts local so an unpublished build shows its own revision.
+        for source in x["sources"]:
+            if source.startswith("data/") and Path(source).suffix == ".svg":
+                (out / "data").mkdir(exist_ok=True)
+                shutil.copy(ROOT / source, out / "data" / Path(source).name)
     print(f"Built {len(entries)} entries into {out}")
 
 
