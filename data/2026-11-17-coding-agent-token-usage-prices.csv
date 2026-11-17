@@ -1,0 +1,76 @@
+tool,model,token_type,usd_per_million,checked_date,source_url,basis
+claude,claude-fable-5-2,uncached_input,8,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5-2,output,40,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5-2,cache_read,0.2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5-2,cache_write_5m,10.0,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5-2,cache_write_1h,16,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5-1,uncached_input,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context; Fable 5.1 checked rate differs from supplied brief
+claude,claude-fable-5-1,output,50,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context; Fable 5.1 checked rate differs from supplied brief
+claude,claude-fable-5-1,cache_read,0.25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context; Fable 5.1 checked rate differs from supplied brief
+claude,claude-fable-5-1,cache_write_5m,12.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context; Fable 5.1 checked rate differs from supplied brief
+claude,claude-fable-5-1,cache_write_1h,20,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context; Fable 5.1 checked rate differs from supplied brief
+claude,claude-fable-5,uncached_input,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5,output,50,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5,cache_read,1,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5,cache_write_5m,12.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-fable-5,cache_write_1h,20,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5-5,uncached_input,4,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5-5,output,20,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5-5,cache_read,0.2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5-5,cache_write_5m,5.0,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5-5,cache_write_1h,8,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5,uncached_input,5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5,output,25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5,cache_read,0.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5,cache_write_5m,6.25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-5,cache_write_1h,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-8,uncached_input,5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-8,output,25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-8,cache_read,0.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-8,cache_write_5m,6.25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-8,cache_write_1h,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-7,uncached_input,5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-7,output,25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-7,cache_read,0.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-7,cache_write_5m,6.25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-opus-4-7,cache_write_1h,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5-5,uncached_input,2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5-5,output,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5-5,cache_read,0.1,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5-5,cache_write_5m,2.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5-5,cache_write_1h,4,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5,uncached_input,2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5,output,10,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5,cache_read,0.2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5,cache_write_5m,2.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-sonnet-5,cache_write_1h,4,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-5-5,uncached_input,0.1,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-5-5,output,0.5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-5-5,cache_read,0.01,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-5-5,cache_write_5m,0.125,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-5-5,cache_write_1h,0.2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-4-5-20251001,uncached_input,1,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-4-5-20251001,output,5,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-4-5-20251001,cache_read,0.1,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-4-5-20251001,cache_write_5m,1.25,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+claude,claude-haiku-4-5-20251001,cache_write_1h,2,2026-11-17,https://platform.claude.com/docs/en/about-claude/pricing,standard short-context
+codex,gpt-6.1-sol,uncached_input,2,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-sol,standard short-context
+codex,gpt-6.1-sol,output,10,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-sol,standard short-context
+codex,gpt-6.1-sol,cached_input,0.1,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-sol,standard short-context
+codex,gpt-6.1-sol,cache_write,2.5,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-sol,standard short-context
+codex,gpt-6.1-terra,uncached_input,1,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-terra,standard short-context
+codex,gpt-6.1-terra,output,5,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-terra,standard short-context
+codex,gpt-6.1-terra,cached_input,0.05,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-terra,standard short-context
+codex,gpt-6.1-terra,cache_write,1.25,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6.1-terra,standard short-context
+codex,gpt-6-astra,uncached_input,10,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-astra,standard short-context
+codex,gpt-6-astra,output,50,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-astra,standard short-context
+codex,gpt-6-astra,cached_input,1,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-astra,standard short-context
+codex,gpt-6-astra,cache_write,12.5,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-astra,standard short-context
+codex,gpt-6-luna,uncached_input,0.1,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-luna,standard short-context
+codex,gpt-6-luna,output,0.5,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-luna,standard short-context
+codex,gpt-6-luna,cached_input,0.01,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-luna,standard short-context
+codex,gpt-6-luna,cache_write,0.125,2026-11-17,https://developers.openai.com/api/docs/models/gpt-6-luna,standard short-context
+codex,codex-auto-review,uncached_input,,2026-11-17,https://developers.openai.com/api/docs/pricing,No public API price found for exact label; no inferred model substitution
+codex,codex-auto-review,output,,2026-11-17,https://developers.openai.com/api/docs/pricing,No public API price found for exact label; no inferred model substitution
+codex,codex-auto-review,cached_input,,2026-11-17,https://developers.openai.com/api/docs/pricing,No public API price found for exact label; no inferred model substitution
+codex,codex-auto-review,cache_write,,2026-11-17,https://developers.openai.com/api/docs/pricing,No public API price found for exact label; no inferred model substitution

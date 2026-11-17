@@ -56,6 +56,7 @@ th{background:var(--card)}
 .chip.access{background:#fff}
 .dim{color:var(--mut)}
 .body-md p,.body-md li{font-size:16px}
+.body-md img{max-width:100%;height:auto}
 .body-md pre{overflow-x:auto;background:var(--card);padding:10px;border-radius:6px}
 
 .cite { margin-block: 2rem; }

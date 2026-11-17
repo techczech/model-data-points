@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="620" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+<title id="title">Weekly API-equivalent value in full-record windows</title>
+<desc id="desc">Top: three consecutive full weeks for both tools, stacked by tool. Bottom: eight full weeks for Claude Code only. Each panel is independently ranked by value, descending, with no time axis. Orange is Codex priced value and blue is Claude Code. Earlier fragmentary weeks, missing records and the current partial week are excluded. Exact ranked values are in the weekly CSV.</desc>
+<rect width="900" height="620" fill="white"/>
+<g font-family="sans-serif" font-size="12" fill="#172b40">
+<g data-window="headline">
+<text x="78" y="22" font-size="15" font-weight="bold">Both tools: three consecutive full weeks (ranked by value)</text>
+<text x="78" y="42">Standard short-context API value (USD); unpriced tokens excluded</text>
+<path d="M78 240.0H880" stroke="#d9e0e7"/>
+<text x="70" y="244.0" text-anchor="end">$0</text>
+<path d="M78 195.0H880" stroke="#d9e0e7"/>
+<text x="70" y="199.0" text-anchor="end">$1,234</text>
+<path d="M78 150.0H880" stroke="#d9e0e7"/>
+<text x="70" y="154.0" text-anchor="end">$2,467</text>
+<path d="M78 105.0H880" stroke="#d9e0e7"/>
+<text x="70" y="109.0" text-anchor="end">$3,701</text>
+<path d="M78 60.0H880" stroke="#d9e0e7"/>
+<text x="70" y="64.0" text-anchor="end">$4,935</text>
+<g data-week-rank="Week 1">
+<rect x="131.47" y="100.80" width="160.40" height="139.20" fill="#2366a8"><title>Week 1, Claude Code: $3,816.11</title></rect>
+<rect x="131.47" y="79.29" width="160.40" height="21.51" fill="#cf661a"><title>Week 1, Codex (priced models): $589.70</title></rect>
+<text x="211.67" y="72.29" text-anchor="middle">$4,406</text>
+<text x="211.67" y="263" text-anchor="middle">Week 1</text>
+</g>
+<g data-week-rank="Week 2">
+<rect x="398.80" y="113.92" width="160.40" height="126.08" fill="#2366a8"><title>Week 2, Claude Code: $3,456.47</title></rect>
+<rect x="398.80" y="81.68" width="160.40" height="32.23" fill="#cf661a"><title>Week 2, Codex (priced models): $883.58</title></rect>
+<text x="479.00" y="74.68" text-anchor="middle">$4,340</text>
+<text x="479.00" y="263" text-anchor="middle">Week 2</text>
+</g>
+<g data-week-rank="Week 3">
+<rect x="666.13" y="180.23" width="160.40" height="59.77" fill="#2366a8"><title>Week 3, Claude Code: $1,638.46</title></rect>
+<rect x="666.13" y="132.81" width="160.40" height="47.42" fill="#cf661a"><title>Week 3, Codex (priced models): $1,300.10</title></rect>
+<text x="746.33" y="125.81" text-anchor="middle">$2,939</text>
+<text x="746.33" y="263" text-anchor="middle">Week 3</text>
+</g>
+</g>
+<g data-window="claude_only">
+<text x="78" y="327" font-size="15" font-weight="bold">Claude Code only: eight full weeks (ranked by value)</text>
+<text x="78" y="347">Standard short-context API value (USD); unpriced tokens excluded</text>
+<path d="M78 545.0H880" stroke="#d9e0e7"/>
+<text x="70" y="549.0" text-anchor="end">$0</text>
+<path d="M78 500.0H880" stroke="#d9e0e7"/>
+<text x="70" y="504.0" text-anchor="end">$1,453</text>
+<path d="M78 455.0H880" stroke="#d9e0e7"/>
+<text x="70" y="459.0" text-anchor="end">$2,907</text>
+<path d="M78 410.0H880" stroke="#d9e0e7"/>
+<text x="70" y="414.0" text-anchor="end">$4,360</text>
+<path d="M78 365.0H880" stroke="#d9e0e7"/>
+<text x="70" y="369.0" text-anchor="end">$5,814</text>
+<g data-week-rank="Week 1">
+<rect x="98.05" y="384.29" width="60.15" height="160.71" fill="#2366a8"><title>Week 1, Claude Code: $5,190.82</title></rect>
+<text x="128.12" y="377.29" text-anchor="middle">$5,191</text>
+<text x="128.12" y="568" text-anchor="middle">Week 1</text>
+</g>
+<g data-week-rank="Week 2">
+<rect x="198.30" y="426.85" width="60.15" height="118.15" fill="#2366a8"><title>Week 2, Claude Code: $3,816.11</title></rect>
+<text x="228.38" y="419.85" text-anchor="middle">$3,816</text>
+<text x="228.38" y="568" text-anchor="middle">Week 2</text>
+</g>
+<g data-week-rank="Week 3">
+<rect x="298.55" y="436.36" width="60.15" height="108.64" fill="#2366a8"><title>Week 3, Claude Code: $3,509.05</title></rect>
+<text x="328.62" y="429.36" text-anchor="middle">$3,509</text>
+<text x="328.62" y="568" text-anchor="middle">Week 3</text>
+</g>
+<g data-week-rank="Week 4">
+<rect x="398.80" y="437.98" width="60.15" height="107.02" fill="#2366a8"><title>Week 4, Claude Code: $3,456.47</title></rect>
+<text x="428.88" y="430.98" text-anchor="middle">$3,456</text>
+<text x="428.88" y="568" text-anchor="middle">Week 4</text>
+</g>
+<g data-week-rank="Week 5">
+<rect x="499.05" y="462.97" width="60.15" height="82.03" fill="#2366a8"><title>Week 5, Claude Code: $2,649.59</title></rect>
+<text x="529.12" y="455.97" text-anchor="middle">$2,650</text>
+<text x="529.12" y="568" text-anchor="middle">Week 5</text>
+</g>
+<g data-week-rank="Week 6">
+<rect x="599.30" y="467.96" width="60.15" height="77.04" fill="#2366a8"><title>Week 6, Claude Code: $2,488.30</title></rect>
+<text x="629.38" y="460.96" text-anchor="middle">$2,488</text>
+<text x="629.38" y="568" text-anchor="middle">Week 6</text>
+</g>
+<g data-week-rank="Week 7">
+<rect x="699.55" y="494.27" width="60.15" height="50.73" fill="#2366a8"><title>Week 7, Claude Code: $1,638.46</title></rect>
+<text x="729.62" y="487.27" text-anchor="middle">$1,638</text>
+<text x="729.62" y="568" text-anchor="middle">Week 7</text>
+</g>
+<g data-week-rank="Week 8">
+<rect x="799.80" y="509.53" width="60.15" height="35.47" fill="#2366a8"><title>Week 8, Claude Code: $1,145.51</title></rect>
+<text x="829.88" y="502.53" text-anchor="middle">$1,146</text>
+<text x="829.88" y="568" text-anchor="middle">Week 8</text>
+</g>
+</g>
+<rect x="78" y="278" width="12" height="12" fill="#2366a8"/><text x="97" y="289">Claude Code</text>
+<rect x="210" y="278" width="12" height="12" fill="#cf661a"/><text x="229" y="289">Codex (priced models)</text>
+<text x="78" y="605">Both panels exclude fragmentary periods and the partial week at collection.</text>
+</g></svg>
