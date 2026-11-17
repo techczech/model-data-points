@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 GITHUB = "https://github.com/techczech/model-data-points"
 BENCHMARKS = "https://semanticmachines.fyi/benchmarks"
 SM_HOME = "https://semanticmachines.fyi"
+SNACKS = "https://researchsnacks.semanticmachines.fyi"
 
 TASK_TYPES = {
     "ocr": "OCR", "computer-use": "Computer use", "local-models": "Local models",
@@ -127,7 +128,7 @@ def page(title, body, desc, nav_on="", citation=None):
         body = body.replace("</main>", cite_block(citation) + "</main>", 1)
     def a(key, href, label):
         return f'<a{" class=on" if nav_on == key else ""} href="{href}">{label}</a>'
-    nav = (a("entries", "/", "Entries") + a("models", "/#models", "Models tested") + a("about", "/about/", "About")
+    nav = (a("entries", "/", "Entries") + a("models", "/#models", "Models tested") + a("about", "/about/", "About") + f'<a href="{SNACKS}">Research Snacks</a>'
            + f'<a href="{GITHUB}">GitHub</a><a href="{BENCHMARKS}">Semantic Machines Benchmarks</a>')
     return f"""<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{e(citation["url"])}">{citation_head(citation)}<script src="/copy.js" defer></script><link rel="stylesheet" href="/style.css"></head><body><header class="site"><div class="wrap"><a class="logo" href="/"><b>MD</b><span>Model Data Points</span></a>
 <nav class="main">{nav}</nav></div></header>
@@ -231,6 +232,7 @@ def entry_page(x):
 ABOUT = f"""<main class="wrap entry" style="padding-top:40px"><h1>About Model Data Points</h1>
 <p>A data point is one small experiment with AI models: what was tested, on which models, why, and what happened. Each one is a single Markdown file with structured fields, so the entries can be read, filtered and reused.</p>
 <h2>What these are not</h2><p>They are not systematic benchmarks. Most are one run on one machine with a handful of tasks. Every entry lists its caveats; read them before drawing a conclusion. For systematic comparisons see <a href="{BENCHMARKS}">Semantic Machines Benchmarks</a>.</p>
+<h2>Sister site</h2><p><a href="{SNACKS}">Research Snacks</a> uses AI agents to check claims about the world against primary data, in the spirit of Mark Liberman's <a href="https://languagelog.ldc.upenn.edu/nll/index.php?s=breakfast">Breakfast Experiments™</a>. Model Data Points checks the models themselves.</p>
 <h2>Use and licence</h2><p>The text and data are published under CC BY 4.0; the build scripts are MIT. The entries, raw data files and build script are in the <a href="{GITHUB}">GitHub repository</a>.</p>
 <h2>Author</h2><p>Dominik Lukeš, part of <a href="{SM_HOME}">Semantic Machines</a>.</p></main>"""
 
