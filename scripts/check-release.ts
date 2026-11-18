@@ -15,6 +15,16 @@ const records:Record<string,any>={target:current,checks:[],comparisons:[]};
 const passed=(name:string,detail:any=true)=>{records.checks.push({name,passed:true,detail});console.log(`PASS ${name}`);};
 const entries=getEntries();const paths=['/','/about/',...entries.map(x=>`/${x.slug}/`)];const entryCount=entries.length;
 const label=(path:string)=>path==='/'?'home':path.split('/').filter(Boolean)[0];
+async function contrast(page:any){
+ const failures=await page.evaluate(()=>{
+  const rgb=(s:string)=>s.match(/[\d.]+/g)!.slice(0,3).map(Number).map(v=>{const n=v/255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4;});
+  const lum=(s:string)=>rgb(s).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+  return ['body','.hero p','.card p','.meta','.chip.open','.chip.closed','nav.main a','.logo b','.legend'].flatMap(selector=>Array.from(document.querySelectorAll(selector)).slice(0,3).flatMap(el=>{
+   let parent:Element|null=el,bg='rgba(0, 0, 0, 0)';while(parent){bg=getComputedStyle(parent).backgroundColor;if(bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent')break;parent=parent.parentElement;}
+   const fg=getComputedStyle(el).color,a=lum(fg),b=lum(bg),ratio=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);return ratio<4.5?[{selector,ratio,fg,bg}]:[];
+  }));
+ });assert.deepEqual(failures,[],'Text contrast below 4.5:1');
+}
 try {
   // Capture all 16 original routes at desktop and phone widths, with JS off so the same PNGs are compared.
   const nojs=await browser.newContext({javaScriptEnabled:false,colorScheme:'light'});
@@ -34,9 +44,9 @@ try {
       records.comparisons.push({path,width,old:!!baseline,new:true});
     }
   }
-  await nojs.close();passed('JavaScript off: 16 routes render, all PNGs load; no page overflow on desktop/phone');
+  await p.goto(current+'/search/');assert.equal(await p.locator('main li').count(),entryCount+2);await nojs.close();passed('JavaScript off: 16 routes render, all PNGs load; no page overflow on desktop/phone');
   const ctx=await browser.newContext({colorScheme:'light',reducedMotion:'reduce'});const page=await ctx.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(current);await page.locator('.js').waitFor();
+  await page.goto(current);await page.locator('.js').waitFor();await contrast(page);passed('Light theme text contrast: body, cards, labels, chips, links and logo meet 4.5:1');
   // keyboard open/containment/Esc/focus return for both dialogs.
   for(const [opener,dialog] of [['[data-open-search]','#search-dlg'],['[data-open-keys]','#keys-dlg']]){
     await page.locator(opener).focus();await page.keyboard.press('Enter');assert(await page.locator(dialog).evaluate((d:any)=>d.open));
@@ -70,7 +80,7 @@ try {
   assert.deepEqual(errors,[]);await ctx.close();
   for(const scheme of ['dark','forced']){
     const c=await browser.newContext({colorScheme:'dark',forcedColors:scheme==='forced'?'active':'none'});const q=await c.newPage();
-    for(const path of ['/','/coding-agent-token-usage/']){await q.goto(current+path);await q.screenshot({path:join(dir,`${scheme}-${label(path)}.png`),fullPage:true});}
+    for(const path of ['/','/coding-agent-token-usage/']){await q.goto(current+path);if(path==='/'&&scheme==='dark')await contrast(q);await q.screenshot({path:join(dir,`${scheme}-${label(path)}.png`),fullPage:true});}
     await q.goto(current);await q.locator('[data-theme-set=light]').click();assert.equal(await q.locator('html').getAttribute('data-theme'),'light');if(scheme==='dark')assert.equal(await q.evaluate(()=>getComputedStyle(document.body).backgroundColor),'rgb(251, 250, 247)');await c.close();
   }
   passed('Dark and forced-colours screenshots; explicit light overrides dark system');

@@ -37,3 +37,4 @@ header.site .wrap{height:auto}.logo{flex-shrink:0}.filters{align-items:end}.filt
 .list{grid-template-columns:minmax(0,1fr)}.card,.models>div{min-width:0;overflow-wrap:anywhere}.chip{max-width:100%;white-space:normal}
 footer{overflow-wrap:anywhere}.theme-switch{flex-wrap:wrap;max-width:100%;min-width:0}.house-controls>*{max-width:100%}
 .entry table{overflow-wrap:normal}
+.logo b{color:var(--bg)}
