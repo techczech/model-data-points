@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {getEntries,TASK_TYPES,chips,dateLabel,NAME,TAGLINE,INTRO,GITHUB,BENCHMARKS} from '../lib/content';
+const entries=getEntries();
+const names=[...new Set(entries.flatMap(x=>x.models.map(m=>m.name)))].sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()));
+const types=[...new Set(entries.map(x=>TASK_TYPES[x.task_type]))].sort();
+const years=[...new Set(entries.map(x=>x.date.slice(0,4)))].sort().reverse();
+---
+<BaseLayout title={NAME} description={TAGLINE} active="entries" cite>
+<section class="hero"><div class="wrap"><h1>{NAME}</h1><p>{INTRO}</p><div class="tools"><a href={GITHUB}>All entries as Markdown files on GitHub</a><a href={BENCHMARKS}>Semantic Machines Benchmarks (systematic comparisons) →</a></div></div></section>
+<main id="main" class="wrap">
+<form class="filters js-only" id="filters">
+<label>Find an entry<input name="q" type="search" /></label>
+<label>Task type<select name="cat" id="f-type"><option value="">All</option>{types.map(t=><option>{t}</option>)}</select></label>
+<label>Model<select name="model" id="f-model"><option value="">All</option>{names.map(n=><option>{n}</option>)}</select></label>
+<label>Open or closed<select name="open" id="f-open"><option value="">All</option><option value="open">Open weights</option><option value="closed">Closed</option></select></label>
+<label>Year<select name="year" id="f-year"><option value="">Any year</option>{years.map(y=><option>{y}</option>)}</select></label><button type="reset">Clear filters</button>
+</form><div class="legend" id="count" role="status">{entries.length} entries</div>
+<div class="list">{entries.map(x=><a class="card" href={`/${x.slug}/`} data-category={TASK_TYPES[x.task_type]} data-models={JSON.stringify([...new Set(x.models.map(m=>m.name))])} data-open={[...new Set(x.models.map(m=>m.open_weights?'open':'closed'))].join(' ')} data-date={x.date} data-search={[x.title,x.headline,x.purpose,x._body,...x.models.map(m=>m.name)].join(' ')}><div class="meta"><span>{dateLabel(x.date,'short')}</span><span class="tag">{TASK_TYPES[x.task_type]}</span>{x.status==='partial'&&<span class="tag">Partial</span>}</div><h3>{x.title}</h3><div set:html={chips(x.models)}></div><p>{x.headline}</p></a>)}</div>
+<div class="no-results" hidden><h3>No entries match these filters</h3><p>Try another search or <button type="button" data-clear-filters>show every entry</button>.</p></div>
+<h2 class="sec" id="models">Models tested</h2><p class="legend">Green is open weights, amber is closed. Each model lists its entries.</p>
+<div class="models">{names.map(name=>{const found=entries.filter(x=>x.models.some(m=>m.name===name));const m=found[0].models.find(m=>m.name===name)!;return <div><b>{name} <span class:list={['chip',m.open_weights?'open':'closed']}>{m.open_weights?'open':'closed'}</span></b>{found.map(x=><Fragment><a href={`/${x.slug}/`}>{x.title.length<48?x.title:x.title.slice(0,47)+'…'}</a><br /></Fragment>)}</div>;})}</div>
+</main></BaseLayout>

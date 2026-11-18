@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntries } from '../lib/content';
+---
+<BaseLayout title="Search · Model Data Points" description="Find a Model Data Point or site page" cite>
+  <main id="main" class="wrap entry search-page"><h1>Search Model Data Points</h1><form action="/search/" method="get"><label for="fallback-search">Search entries and pages</label><input id="fallback-search" name="q" type="search" /><button type="submit">Search</button></form><p>With JavaScript off, browse all entries and pages below, or use your browser’s find command.</p><ul><li><a href="/">Entries</a></li><li><a href="/about/">About</a></li>{getEntries().map(x => <li><a href={`/${x.slug}/`}>{x.title}</a><p>{x.headline}</p></li>)}</ul></main>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import { keyMap } from '../lib/keys';
+---
+<dialog class="kit-dlg dlg" id="search-dlg" aria-labelledby="search-title">
+  <div class="dialog-head"><h2 id="search-title">Search Model Data Points</h2><button type="button" data-close aria-label="Close search">Close</button></div>
+  <div class="dialog-body"><label for="search-input">Search entries and pages</label><input class="search-input" id="search-input" type="search" role="combobox" aria-expanded="false" aria-controls="search-results" aria-autocomplete="list" autocomplete="off" /></div>
+  <p class="search-status" role="status"></p><div class="search-results" id="search-results" role="listbox" aria-label="Search results"></div>
+  <div class="dialog-foot"><kbd>↑</kbd> <kbd>↓</kbd> move · <kbd>Enter</kbd> open · <kbd>Shift+Enter</kbd> source · <kbd>Esc</kbd> close<br /><a href="/search-index.json">Public search index</a> · <a href="/search/">All entries and pages</a></div>
+</dialog>
+<dialog class="kit-dlg dlg" id="keys-dlg" aria-labelledby="keys-title">
+  <div class="dialog-head"><h2 id="keys-title">Keyboard shortcuts</h2><button type="button" data-close aria-label="Close keyboard shortcuts">Close</button></div>
+  <div class="dialog-body">
+    <p>Single keys work when you are not typing and no dialog is open.</p>
+    <label class="keys-switch"><input type="checkbox" data-single-keys checked /> Single-key shortcuts</label>
+    <p>Turn these off if stray key presses move the page. ⌘K / Ctrl+K and Esc keep working.</p>
+    <dl class="key-list">{keyMap.map(k => <div><dt><kbd>{k.key}</kbd></dt><dd>{k.label}</dd></div>)}</dl>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>

@@ -19,17 +19,37 @@ Raw data referenced by `sources` goes in `data/`. Publication rules: no private 
 
 ## Build
 
-Needs [uv](https://docs.astral.sh/uv/) (installs PyYAML and Markdown on the fly):
+Needs [bun](https://bun.sh/). The Astro stack and lockfile follow Research Snacks.
 
 ```sh
-uv run scripts/build-site.py
+bun install --frozen-lockfile
+bun run build
 ```
 
-This writes the static site to `site/` (git-ignored): the index with filters and a "Models tested" list, one page per entry at `/<slug>/` (the id without its date), and `/about/`. Preview with `python3 -m http.server -d site`.
+This writes the static site to ignored `site/`: the entry index with task/model/open-or-closed/year filters and a Models tested list, one page per entry at `/<slug>/` (the ID without its date), and `/about/`. `bun run dev` serves local development; `bun run preview` serves a completed build. The old `uv run scripts/build-site.py` command remains a compatibility launcher.
+
+```sh
+bun run check
+bun run check:release
+```
+
+The first command builds and checks types, frontmatter/privacy, citations, local links/anchors, RSS and usage-accounting. The second uses headless Chromium for JavaScript-off pages, keyboard dialogs, filters, reduced motion, 200% text, dark/forced colours, storage failure and copy feedback. It opens no visible browser window. See [migration parity and evidence](docs/parity-model-data-points-astro.md).
+
+## Subscribe and reuse
+
+[Subscribe (RSS)](https://datapoints.semanticmachines.fyi/rss.xml) for new data points. The feed includes each full headline summary, title, experiment date, permanent link and task/status categories. Every page links to the feed, its Markdown counterpart and citation metadata. Agents can start with `/llms.txt` or `/search-index.json`.
+
+Source-listed CSV/SVG files are also served at `/data/<filename>`. GitHub source links stay unchanged. Entries remain single Markdown files with their original frontmatter; no Astro files need editing to add one.
+
+## Usage pipeline
+
+`python3 scripts/value-coding-agent-usage.py` regenerates the frozen coding-agent-token-usage entry, derived CSVs and chart from the anonymous daily/pricing CSVs. Build afterwards with `bun run build`. The collector's synthetic deduplication/home-boundary test and a byte-for-byte isolated valuation rerun are included in `bun run check`. The collector reads local logs; its unsanitised JSON is not publication material.
 
 ## Deploy
 
-`scripts/deploy.sh` builds and publishes `site/` to the Cloudflare Pages project `model-data-points` with wrangler.
+`scripts/deploy.sh --preview` checks and publishes a feature branch to the existing Cloudflare Pages project `model-data-points`. Verify parity on that preview, merge to main, then run `scripts/deploy.sh --production` from clean main. The default invocation still selects production. Set `CLOUDFLARE_ACCOUNT_ID=b6ae5bced06492ee6f0c8f92776804da` when several accounts are available. Existing account, custom domain and DNS attachment are retained.
+
+After deployment, `python3 scripts/check-live.py [base-url]` curls every old public path plus canonical page aliases, feed, Markdown and agent routes; it requires HTTP 200 and matching build bytes. The shared kit's citation checker can also perform real Zotero saves when a translation-server is available.
 
 ## Licence
 

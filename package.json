@@ -1,0 +1,29 @@
+{
+  "name": "model-data-points",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run prepare:site && astro dev",
+    "prepare:site": "bun scripts/prepare-site.ts",
+    "build": "bun run prepare:site && astro build",
+    "preview": "astro preview",
+    "check": "bun run build && tsc --noEmit && bun test && python3 scripts/check-citations.py site && python3 scripts/check-site.py && python3 scripts/test-usage-accounting.py",
+    "check:release": "bun scripts/check-release.ts"
+  },
+  "dependencies": {
+    "astro": "7.4.8",
+    "micromark": "4.0.3",
+    "micromark-extension-gfm": "3.0.0",
+    "yaml": "2.8.3"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.2",
+    "linkedom": "0.18.12",
+    "playwright-core": "1.62.1",
+    "typescript": "6.0.3"
+  },
+  "overrides": {
+    "sharp": "0.35.5",
+    "zod": "4.6.6"
+  }
+}

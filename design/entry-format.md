@@ -28,6 +28,10 @@ One Markdown file per data point in `entries/`, named `YYYY-MM-DD-short-slug.md`
 
 Publication rules: no private content, personal names, machine names, file paths or plan prices. Numbers only where text would expose private material.
 
+## Build and publication
+
+Run `bun run check` after editing; `bun run build` is the canonical Astro build. The entry format and stable date-free URL do not change. RSS uses `headline` as its full summary, `date` as publication date, and task/status labels as categories. Keep source filenames stable; source-listed CSV/SVG files are copied to `/data/` at build time. The old Python build command remains a compatibility launcher for existing methods.
+
 ## Example
 
 ```markdown

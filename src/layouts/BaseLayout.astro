@@ -1,0 +1,46 @@
+---
+import '../styles/house.css';
+import '../styles/kit/dialog.css';
+import { themePrepaint } from '../scripts/kit/theme';
+import { citationHead, citeBlockHtml } from '../scripts/kit/citation';
+import { BASE, NAME, cssVersion, pageCitation } from '../lib/content';
+import Dialogs from '../components/Dialogs.astro';
+const { title, description, entry, active = '', cite = false } = Astro.props;
+const path = Astro.url.pathname;
+const citation = pageCitation(entry?.title || title, path, entry);
+const markdown = `${path === '/' ? '/' : path}index.md`;
+const jsonld = {'@context':'https://schema.org','@type': entry ? 'Article' : 'WebPage',name:entry?.title || title,url:citation.url,description,inLanguage:'en-GB',author:{'@type':'Person',name:'Dominik Lukeš'},isPartOf:{'@type':'WebSite',name:NAME,url:BASE},...(entry ? {headline:entry.title,datePublished:entry.date} : {})};
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" /><meta name="color-scheme" content="light dark" />
+  <title>{title}</title><meta name="description" content={description} /><link rel="canonical" href={citation.url} />
+  <Fragment set:html={citationHead(citation)} />
+  <meta property="og:locale" content="en_GB" /><meta property="og:type" content={entry ? 'article' : 'website'} /><meta property="og:description" content={description} />
+  {entry && <><meta name="twitter:title" content={entry.title} /><meta name="twitter:description" content={description} /></>}
+  <meta name="twitter:card" content={entry?.image ? 'summary_large_image' : 'summary'} />
+  {entry?.image && <><meta property="og:image" content={entry.image} /><meta name="twitter:image" content={entry.image} /></>}
+  <link rel="alternate" type="application/rss+xml" title="Model Data Points" href="/rss.xml" />
+  <link rel="alternate" type="text/markdown" title="Markdown version" href={markdown} />
+  <script is:inline set:html={JSON.stringify(jsonld).replaceAll('<','\\u003c')} type="application/ld+json"></script>
+  <script is:inline set:html={themePrepaint()}></script>
+  <link rel="stylesheet" href={`/style.css?v=${cssVersion}`} />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site"><div class="wrap"><a class="logo" href="/"><b>MD</b><span>{NAME}</span></a><nav class="main" aria-label="Main">
+    <a class:list={[{on:active==='entries'}]} href="/">Entries</a><a href="/#models">Models tested</a><a class:list={[{on:active==='about'}]} href="/about/">About</a><a href="https://researchsnacks.semanticmachines.fyi">Research Snacks</a>
+  <a href="https://github.com/techczech/model-data-points">GitHub</a><a href="https://semanticmachines.fyi/benchmarks">Semantic Machines Benchmarks</a></nav></div></header>
+  <slot />
+  {cite && <div class:list={["wrap page-cite",{entry:entry || active==='about'}]}><Fragment set:html={citeBlockHtml(citation)} /></div>}
+  <footer><div class="wrap">
+    <div class="house-controls"><a href="/rss.xml">Subscribe (RSS)</a><a href="/search/" data-open-search>Search</a><button type="button" class="js-only" data-open-keys>Keyboard shortcuts <kbd>?</kbd></button><div class="theme-switch js-only" role="group" aria-label="Colour theme">{['system','light','dark'].map(t => <button type="button" data-theme-set={t} aria-pressed={t==='system'}>{t[0].toUpperCase()+t.slice(1)}</button>)}</div><button type="button" class="js-only" data-top>Back to top</button></div>
+    <p>{NAME} · datapoints.semanticmachines.fyi · Sister site: <a href="https://researchsnacks.semanticmachines.fyi">Research Snacks</a> (researchsnacks.semanticmachines.fyi) · <a href="https://semanticmachines.fyi">Semantic Machines</a></p>
+    <p>Content CC BY 4.0, code MIT. Data citations are in each entry.</p>
+    <p><a href={markdown}>Markdown version</a> · <a href="/llms.txt">For agents</a></p>
+  </div></footer>
+  <Dialogs />
+  <script>import '../scripts/site';</script>
+</body>
+</html>
