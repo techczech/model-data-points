@@ -2,6 +2,7 @@ import {test,expect} from 'bun:test';
 import {mkdtempSync,writeFileSync,rmSync,readFileSync,mkdirSync,cpSync,readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {getEntries,parseEntry,renderMarkdown,ROOT} from '../src/lib/content';
+mkdirSync(join(ROOT,'.check'),{recursive:true});
 const original=readFileSync(join(ROOT,'entries/2026-03-08-local-image-generation-m4-max.md'),'utf8');
 function fixture(text:string,run:(path:string,dir:string)=>void){const dir=mkdtempSync(join(ROOT,'.check/fixture-'));try{const path=join(dir,'2026-03-08-local-image-generation-m4-max.md');writeFileSync(path,text);run(path,dir);}finally{rmSync(dir,{recursive:true,force:true});}}
 test('all canonical entries and date-free slugs load, preserving order and legacy scalars',()=>{const entries=getEntries();expect(entries.length).toBe(readdirSync(join(ROOT,'entries')).filter(n=>n.endsWith('.md')).length);expect(entries.some(x=>x.slug==='coding-agent-token-usage')).toBe(true);expect(entries.find(x=>x.slug==='computer-use-haiku-terra-luna')!.results.rows[3][3]).toBe('1.0');});
