@@ -1,5 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import {ABOUT} from '../lib/content';
+import {ABOUT,withTOC} from '../lib/content';
 ---
-<BaseLayout title="About · Model Data Points" description="About Model Data Points" active="about" cite><main id="main" class="wrap entry" style="padding-top:2.5rem"><Fragment set:html={ABOUT} /></main></BaseLayout>
+<BaseLayout title="About · Model Data Points" description="About Model Data Points" active="about" cite><main id="main" class="wrap entry" style="padding-top:2.5rem"><Fragment set:html={withTOC(ABOUT)} /></main></BaseLayout>

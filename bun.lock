@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "research-snacks",
+      "name": "model-data-points",
       "dependencies": {
         "astro": "7.4.8",
         "micromark": "4.0.3",

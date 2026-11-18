@@ -15,10 +15,10 @@ urls={('/'+p):p for p in manifest if p!='_headers'}
 for p in (ROOT/'site').rglob('*'):
     if not p.is_file(): continue
     rel=str(p.relative_to(ROOT/'site'))
+    if rel=='_headers': continue
+    urls['/'+rel]=rel
     if rel.endswith('index.html'):
         urls['/'+rel.removesuffix('index.html')]=rel
-    elif rel.endswith('.md') or rel in ('rss.xml','llms.txt','search-index.json'):
-        urls['/'+rel]=rel
 
 def check(item):
     path,rel=item

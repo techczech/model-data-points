@@ -70,7 +70,7 @@ Every page has JSON-LD and a Markdown alternate. Entry Markdown copies are byte-
 | Citation/Zotero | Local metadata PASS; deployed real-save results below |
 | RSS | PASS: all 14 full headline summaries, dates, canonical URLs and task/status categories |
 
-Elements 1–13 and 16 are adopted. The server-rendered contents disclosure has heading anchors, current-section enhancement and sticky positioning at wide widths. Elements 14 (archive) and 15 (book reader) are not applicable. Unchanged kit modules are copied locally; no shared package is introduced.
+Elements 1–13 and 16 are adopted. The entry/About server-rendered contents disclosure has heading anchors, current-section enhancement and sticky positioning at wide widths. Elements 14 (archive) and 15 (book reader) are not applicable. Unchanged kit modules are copied locally; no shared package is introduced.
 
 # Security and verification tools
 
@@ -81,3 +81,7 @@ The headless release suite uses Playwright's headless shell, never the desktop C
 # Deployment evidence
 
 Preview, live URL checks and real Zotero saves are recorded here after the approved release gates pass. Production deployment is allowed only from clean main; `scripts/attach-domain.py` remains unchanged because no DNS/domain change is needed.
+
+## First deployed preview (18 November 2026)
+
+Preview `https://e271f874.model-data-points.pages.dev`, implementation `5f59944`: complete headless suite PASS, all 16 original routes captured at desktop/phone widths, **70/70 curl checks** with exact built bytes, including **20/20 baseline public paths** and every new download/bundle. Four real Zotero saves PASS: home, About, usage entry and search each produce exactly one webpage, author `Lukeš, Dominik`, Website Title `Model Data Points`; the usage entry has `2026/11/17`, other pages are undated. The final preview adds the same contents disclosure to About and corrects the lockfile's project name; no experiment source or data changes.
