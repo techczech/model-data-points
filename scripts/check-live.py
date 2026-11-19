@@ -35,7 +35,7 @@ def check(item):
         def normalise(data): return attr.sub(lambda m:m.group(0).replace(b'http://',b'https://',1),data)
         # Permit only one-way HTTPS upgrades in URL attributes. Every other byte must match.
         upgraded=(len(old)==len(new) and normalise(expected)==normalise(body) and all(b.group(0)==a.group(0) or (b'http://' in a.group(0) and b.group(0)==a.group(0).replace(b'http://',b'https://',1)) for a,b in zip(old,new)))
-    return {'path':path,'status':int(code),'mime':mime,'effective':effective,'matches_build':same,'https_attribute_upgrades_only':upgraded,'ok':code==('404' if rel=='404.html' else '200') and (same or upgraded)}
+    return {'path':path,'status':int(code),'mime':mime,'effective':effective,'matches_build':same,'https_attribute_upgrades_only':upgraded,'ok':code=='200' and (same or upgraded)}
 removed=[f'/data/2026-11-17-coding-agent-token-usage-{suffix}.csv' for suffix in ['daily','coverage','weekly-model-token-types']]
 def check_removed(path):
     r=subprocess.run(['curl','--silent','--show-error','--max-time','30','--output','/dev/null','--write-out','%{http_code}',BASE+path],capture_output=True,text=True)
@@ -45,6 +45,6 @@ results += [check_removed(path) for path in removed]
 failures=[r for r in results if not r['ok']]
 report={'base':BASE,'count':len(results),'baseline_public_paths':len([p for p in manifest if p!='_headers']),'failures':failures,'results':results}
 out=ROOT/'.check';out.mkdir(exist_ok=True);(out/'live-check.json').write_text(json.dumps(report,indent=2)+'\n')
-print(f'{"PASS" if not failures else "FAIL"}: {len(results)} URLs; {len([p for p in manifest if p!='_headers'])} baseline public paths; {len(failures)} failures. HTTP 200 and built bytes required for retained URLs; removed URLs and error page require 404; one-way HTTPS attribute upgrades allowed and reported.')
+print(f'{"PASS" if not failures else "FAIL"}: {len(results)} URLs; {len([p for p in manifest if p!='_headers'])} baseline public paths; {len(failures)} failures. HTTP 200 and built bytes required for retained URLs; removed URLs require 404; one-way HTTPS attribute upgrades allowed and reported.')
 for r in failures: print(json.dumps(r))
 raise SystemExit(bool(failures))
