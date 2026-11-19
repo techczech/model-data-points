@@ -43,7 +43,7 @@ Source-listed CSV/SVG files are also served at `/data/<filename>`. GitHub source
 
 ## Usage pipeline
 
-`python3 scripts/value-coding-agent-usage.py` regenerates the frozen coding-agent-token-usage entry, derived CSVs and chart from the anonymous daily/pricing CSVs. Build afterwards with `bun run build`. The collector's synthetic deduplication/home-boundary test and a byte-for-byte isolated valuation rerun are included in `bun run check`. The collector reads local logs; its unsanitised JSON is not publication material.
+`python3 scripts/value-coding-agent-usage.py` regenerates the frozen coding-agent-token-usage entry, derived CSVs and chart from ranked, undated weekly CSVs, whole-window model/token totals and the pricing CSV. Build afterwards with `bun run build`. The collector's synthetic deduplication/home-boundary test and a byte-for-byte isolated valuation rerun are included in `bun run check`. The collector reads local logs; its JSON is saved under ignored `.local-usage/` and is not publication material. For fresh inputs, the valuation script accepts `--daily` plus explicit local coverage boundaries (see `--help`); no dates are frozen into the published pipeline. The build rejects dated usage data and per-day tables.
 
 ## Deploy
 

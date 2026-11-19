@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """Aggregate Claude Code and Codex token usage from local session logs.
-Output: JSON list of daily rows, no content. Reads only the two supported personal Codex homes."""
-import json, glob, os, sys, collections
+Output: ignored local JSON daily rows, no content; never a public data file. Reads only the two supported personal Codex homes."""
+import argparse, json, glob, os, sys, collections
+from pathlib import Path
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=Path(__file__).resolve().parent.parent / ".local-usage/collector.json")
+args = parser.parse_args()
+if ".local-usage" not in args.output.resolve().parts:
+    parser.error("Collector output must stay in an ignored .local-usage/ folder")
 H = os.path.expanduser('~')
 agg = collections.defaultdict(lambda: [0]*7)  # unc_in, out, cache_read, w5, w1, reasoning, calls
 
@@ -66,4 +72,6 @@ for d in sorted(glob.glob(H + '/.claude*')):
 for d in (H + '/.codex', H + '/.codex-t3'):
     if 'enterprise' in d: continue
     if os.path.isdir(d + '/sessions') or os.path.isdir(d + '/archived_sessions'): codex(d)
-json.dump([list(k) + v for k, v in agg.items()], sys.stdout)
+args.output.parent.mkdir(parents=True, exist_ok=True)
+args.output.write_text(json.dumps([list(k) + v for k, v in agg.items()]))
+print("Saved local usage collection; raw rows are not publication material.")

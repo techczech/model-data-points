@@ -18,6 +18,8 @@
 5. `bun run check` (builds and validates fields, id, private paths, script URLs, row widths, citations, links, RSS and usage-accounting). Commit, push, `scripts/deploy.sh --production` from clean `main` (needs `CLOUDFLARE_ACCOUNT_ID=b6ae5bced06492ee6f0c8f92776804da` if several accounts). Check the entry URL returns 200.
 6. Prose: short and literal; `dominik-writer` for longer write-ups.
 
+- Usage data is published only as ranked, undated weeks and whole-window totals. Daily inputs and machine coverage stay in ignored local storage.
+
 ## Notes
 
 - Slug = id minus date; keep stable (URLs).

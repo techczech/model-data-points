@@ -24,9 +24,9 @@ test('usage valuation regenerates the frozen entry, CSVs and chart unchanged in 
   for(const d of ['scripts','data','entries'])mkdirSync(join(tmp,d));
   cpSync(join(ROOT,'scripts/value-coding-agent-usage.py'),join(tmp,'scripts/value-coding-agent-usage.py'));
   const id='2026-11-17-coding-agent-token-usage';
-  for(const suffix of ['daily','prices'])cpSync(join(ROOT,`data/${id}-${suffix}.csv`),join(tmp,`data/${id}-${suffix}.csv`));
+  for(const suffix of ['prices','weekly','model-token-types','full-record-model-token-types','window-totals'])cpSync(join(ROOT,`data/${id}-${suffix}.csv`),join(tmp,`data/${id}-${suffix}.csv`));
   const result=Bun.spawnSync(['python3',join(tmp,'scripts/value-coding-agent-usage.py')]);expect(result.exitCode).toBe(0);
-  for(const suffix of ['model-token-types.csv','full-record-model-token-types.csv','weekly-model-token-types.csv','weekly.csv','weekly.svg'])expect(readFileSync(join(tmp,`data/${id}-${suffix}`))).toEqual(readFileSync(join(ROOT,`data/${id}-${suffix}`)));
+  for(const suffix of ['model-token-types.csv','full-record-model-token-types.csv','window-totals.csv','weekly.csv','weekly.svg'])expect(readFileSync(join(tmp,`data/${id}-${suffix}`))).toEqual(readFileSync(join(ROOT,`data/${id}-${suffix}`)));
   expect(readFileSync(join(tmp,`entries/${id}.md`))).toEqual(readFileSync(join(ROOT,`entries/${id}.md`)));
  }finally{rmSync(tmp,{recursive:true,force:true});}
 });

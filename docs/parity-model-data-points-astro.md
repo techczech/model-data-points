@@ -107,3 +107,10 @@ Raw screenshots and the temporary copied baseline were removed at completion. Fi
 Maintainer docs, standing publication instructions and usage compatibility are complete. The catalogue records the Astro deployment and RSS surface (`32c594a`); its unrelated dirty source/security files were restored byte-for-byte, with all original audit events retained. The shared web-pattern local table is committed/pushed; active global routing already points to this site's updated AGENTS.md. No experiment Markdown, data, usage generator, collector, original check script or domain-attachment script changed.
 
 **Result: content/URL parity and the complete release check passed. Nothing remains for Dominik.** The two unpatched build-tool advisories remain recorded as described above; they introduce no unfinished migration work.
+
+
+## Usage privacy revision, 19 November 2026
+
+The migration results above record the original release. The approved privacy revision now removes the daily, machine-coverage and weekly/model usage downloads. The retained weekly CSV and SVG use independently ranked, undated weeks; headline model/token totals lose their date columns. Exact whole-window sufficient statistics support reproducible public regeneration without daily inputs. The entry, method and pipeline no longer reveal usage dates or machine types. Prices and their check dates, the publication date and all reported figures are retained.
+
+`bun run build` now rejects dated usage assets and per-day tables, including unlisted files under `data/`. The local collector writes ignored `.local-usage/` output. `bun run check` retains all original validation and adds public-rerun/privacy/local-valuation checks. A top-level 404 page disables Cloudflare Pages' SPA fallback so removed downloads return HTTP 404; `scripts/check-live.py` requires those three failures explicitly while retaining byte checks and HTTP 200 for published assets.

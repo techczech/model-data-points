@@ -1,7 +1,10 @@
+import {spawnSync} from 'node:child_process';
 import {cpSync,mkdirSync,rmSync} from 'node:fs';
 import {join,basename} from 'node:path';
 import {ROOT,getEntries,privacyErrors} from '../src/lib/content';
 import {readFileSync} from 'node:fs';
+const usagePrivacy=spawnSync('python3',[join(ROOT,'scripts/check-usage-privacy.py')],{encoding:'utf8'});
+if(usagePrivacy.status!==0)throw new Error(usagePrivacy.stdout+usagePrivacy.stderr);
 const entries=getEntries();
 // Publish only source-listed data, never collector output or private session logs.
 const data=[...new Set(entries.flatMap(x=>x.sources.filter(s=>s.startsWith('data/'))))];

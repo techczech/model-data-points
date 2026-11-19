@@ -6,3 +6,6 @@ node_modules/
 .astro/
 .generated/
 .check/
+
+# Local usage reconstruction inputs and audit evidence; never publication material.
+.local-usage/
