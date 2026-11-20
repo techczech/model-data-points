@@ -7,19 +7,19 @@ models:
   - name: Gemini 4 Hydrogen
     provider: Google
     open_weights: false
-    access: api
+    access: cli
   - name: Gemini 4 Neon
     provider: Google
     open_weights: false
-    access: api
+    access: cli
   - name: GPT-6.2 Sol
     provider: OpenAI
     open_weights: false
-    access: api
+    access: cli
   - name: Claude Opus 5.5
     provider: Anthropic
     open_weights: false
-    access: api
+    access: cli
 purpose: >-
   Find which model writes the clearest public copy for a specialist reader with
   no knowledge of AI, and whether the four writers differ in ways that matter.
