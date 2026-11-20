@@ -1,0 +1,12 @@
+group_type,group,candidate,different_pct
+period,Ur III,all candidates (range),7-10
+period,Old Babylonian,batch drafts (range),41-43
+period,Old Babylonian,single-old,39
+period,Old Babylonian,single-translate,40
+period,Old Babylonian,staged,34
+genre,legal,batch drafts,23
+genre,legal,staged,15
+genre,literary,batch drafts,46
+genre,literary,staged,37
+genre,administrative,batch drafts,9
+genre,administrative,staged,9

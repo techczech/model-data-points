@@ -1,0 +1,6 @@
+candidate,same_pct,minor_difference_pct,different_pct,declined_pct,lines
+batch-a (existing drafts),42,27,27,4,496
+batch-b (same drafts rejudged),40,27,29,4,496
+single-old,40,33,27,0,496
+single-translate,36,33,29,1,496
+staged,37,37,24,2,496
